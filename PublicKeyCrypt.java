@@ -78,36 +78,36 @@ public class PublicKeyCrypt
 		System.out.println("Time taken: "+elapsedTimeMillis+" m/s");
 		
 	
-	}
+	}//end of main
 	/**
 	 * Newton's Method to find the square root of a BigInteger 
 	 * @param N
 	 * @return 
 	 */
 	public static BigInteger SqRtN(BigInteger N)
-    {
-      BigInteger G = new BigInteger((N.shiftRight((N.bitLength() + 1) / 2)).toString());
-      BigInteger LastG = null;
-      BigInteger One = new BigInteger("1");
-      while (true)
-      {
-        LastG = G;
-        G = N.divide(G).add(G).shiftRight(1);
-        int i = G.compareTo(LastG);
-        if (i == 0) 
-        	return G;
-        if (i < 0)
-        {
-          if (LastG.subtract(G).compareTo(One) == 0)
-            if (G.multiply(G).compareTo(N) < 0 && LastG.multiply(LastG).compareTo(N) > 0) return G;
-        }
-        else
-        {
-          if (G.subtract(LastG).compareTo(One) == 0)
-            if (LastG.multiply(LastG).compareTo(N) < 0 && G.multiply(G).compareTo(N) > 0) return LastG;
-        }
-      }
-    }
+    	{
+		BigInteger G = new BigInteger((N.shiftRight((N.bitLength() + 1) / 2)).toString());
+      		BigInteger LastG = null;
+      		BigInteger One = new BigInteger("1");
+		while (true)
+		{
+		        LastG = G;
+		        G = N.divide(G).add(G).shiftRight(1);
+		        int i = G.compareTo(LastG);
+		        if (i == 0) 
+		        	return G;
+		        if (i < 0)
+		        {
+		          if (LastG.subtract(G).compareTo(One) == 0)
+		            if (G.multiply(G).compareTo(N) < 0 && LastG.multiply(LastG).compareTo(N) > 0) return G;
+		        }
+		        else
+		        {
+		          if (G.subtract(LastG).compareTo(One) == 0)
+		            if (LastG.multiply(LastG).compareTo(N) < 0 && G.multiply(G).compareTo(N) > 0) return LastG;
+		        }
+      		}
+    	}
 }
 /**
  * This class describes an object of type Node 
@@ -126,16 +126,15 @@ class Array
 	private int nElems;
 	
 	public Array(int max)          // constructor
-    {
-    theArray = new Node[max];      // create the array
-    nElems = 0;                    // no items yet
-    }
-	
+    	{
+    		theArray = new Node[max];      // create the array
+    		nElems = 0;                    // no items yet
+    	}
 	public void insert(Node value)    // put element into array
-    {
-    theArray[nElems] = value;      // insert it
-    nElems++;                      // increment size
-    }
+    	{
+    		theArray[nElems] = value;      // insert it
+		 nElems++;                      // increment size
+	 }
 //--------------------------------------------------------------
 	//Binary Search
 	public Node find(BigInteger key)
@@ -169,62 +168,62 @@ class Array
 		}
 	}
 	public void display()             // displays array contents
-    {
+	{
     
-    for(int j=0; j<nElems; j++)
-    {
-    	System.out.print("("+theArray[j].BigIntj+","+theArray[j].c+"), ");// for each element,
-    }
+		for(int j=0; j<nElems; j++)
+    		{
+    			System.out.print("("+theArray[j].BigIntj+","+theArray[j].c+"), ");// for each element,
+		}
        
-    System.out.println();
-    }
+    		System.out.println();
+    	}
 //--------------------------------------------------------------
 	public void quickSort()
-    {
-    recQuickSort(0, nElems-1);
-    }
+    	{
+    		recQuickSort(0, nElems-1);
+    	}
 //--------------------------------------------------------------
 	public void recQuickSort(int left, int right)
-    {
-    if(right-left <= 0)              // if size <= 1,
-        return;                      //    already sorted
-    else                             // size is 2 or larger
-       {
-       Node pivot = theArray[right];      // rightmost item
+    	{
+		if(right-left <= 0)              // if size <= 1,
+        	return;                      //    already sorted
+    		else                             // size is 2 or larger
+       		{
+       			Node pivot = theArray[right];      // rightmost item
                                           // partition range
-       int partition = partitionIt(left, right, pivot);
-       recQuickSort(left, partition-1);   // sort left side
-       recQuickSort(partition+1, right);  // sort right side
-       }
-    }  // end recQuickSort()
+       			int partition = partitionIt(left, right, pivot);
+       			recQuickSort(left, partition-1);   // sort left side
+       			recQuickSort(partition+1, right);  // sort right side
+       		}
+    	}  // end recQuickSort()
 //--------------------------------------------------------------
 	public int partitionIt(int left, int right, Node pivot)
-     {
-     int leftPtr = left-1;           // left    (after ++)
-     int rightPtr = right;           // right-1 (after --)
-     while(true)
-        {                            // find bigger item
-        while( theArray[++leftPtr].c.compareTo(pivot.c)<0)
-           ;  // (nop)
+     	{
+     		int leftPtr = left-1;           // left    (after ++)
+     		int rightPtr = right;           // right-1 (after --)
+     		while(true)
+        	{                            // find bigger item
+        		while( theArray[++leftPtr].c.compareTo(pivot.c)<0)
+           		;  // (nop)
                                      // find smaller item
-        while(rightPtr > 0 && theArray[--rightPtr].c.compareTo(pivot.c) >0)
-           ;  // (nop)
+        		while(rightPtr > 0 && theArray[--rightPtr].c.compareTo(pivot.c) >0)
+        	 	;  // (nop)
 
-        if(leftPtr >= rightPtr)      // if pointers cross,
-           break;                    //    partition done
-        else                         // not crossed, so
-           swap(leftPtr, rightPtr);  //    swap elements
-        }  // end while(true)
-     swap(leftPtr, right);           // restore pivot
-     return leftPtr;                 // return pivot location
-     }  // end partitionIt()
+        		if(leftPtr >= rightPtr)      // if pointers cross,
+           			break;                    //    partition done
+        		else                         // not crossed, so
+           			swap(leftPtr, rightPtr);  //    swap elements
+        	}  // end while(true)
+     		swap(leftPtr, right);           // restore pivot
+     		return leftPtr;                 // return pivot location
+     	}  // end partitionIt()
 //--------------------------------------------------------------
 	public void swap(int dex1, int dex2)  // swap two elements
-    {
-    Node temp = theArray[dex1];        // A into temp
-    theArray[dex1] = theArray[dex2];   // B into A
-    theArray[dex2] = temp;             // temp into B
-    }  // end swap(
+    	{
+    		Node temp = theArray[dex1];        // A into temp
+    		theArray[dex1] = theArray[dex2];   // B into A
+    		theArray[dex2] = temp;             // temp into B
+    	}  // end swap
 //-------
 
 }
