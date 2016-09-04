@@ -13,7 +13,7 @@ It uses the Baby Steps Giant Steps algorithm to reduce the complexity to O(sqrt(
           y= 58121575766172118 
           g= 231541186
 
-          therefore 58121575766172118 = 231541186X mod 83187685431865799
+          therefore 58121575766172118 = 231541186^x mod 83187685431865799
           in the form y = g^x mod p.
           
           m = √(p-1) = √n
